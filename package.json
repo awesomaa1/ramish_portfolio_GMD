@@ -1,0 +1,12 @@
+{
+  "name": "ramish-portfolio-root",
+  "version": "1.0.0",
+  "description": "Ramish Shahid - Growth Marketing & Meta Ads Portfolio",
+  "scripts": {
+    "start": "npx -y serve -l 3000 ramish-portfolio",
+    "dev": "npx -y serve -l 3000 ramish-portfolio"
+  },
+  "keywords": ["portfolio", "growth-marketing", "meta-ads"],
+  "author": "Ramish Shahid",
+  "license": "MIT"
+}
