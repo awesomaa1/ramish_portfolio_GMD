@@ -100,13 +100,13 @@ function i() {
     if (!e) return;
     let t = e.textContent,
         n = [
-            [`.about`, `See Chiling me`],
-            [`.services`, matchMedia(`(max-width: 760px)`).matches ? `Here’s what I can do for you` : `Scroll, they slide sideways`],
-            [`.work`, `Pick one, I’ll show you how`],
-            [`.ceos`, `I write as all three of them`],
-            [`.own`, `This one’s my own post`],
-            [`.process`, `This is how I run Fomo’s account`],
-            [`.contact`, `Say hello!`]
+            [`.about`, `Just me, chilling & figuring out growth`],
+            [`.services`, matchMedia(`(max-width: 760px)`).matches ? `What I can do for your brand ✨` : `Keep scrolling, the good stuff slides in`],
+            [`.work`, `Curious what I’ve been cooking? 👀`],
+            [`.ceos`, `Learning, testing, getting better. Repeat.`],
+            [`.own`, `A little something I made myself 💅`],
+            [`.process`, `Here’s how I make the magic happen`],
+            [`.contact`, `Got a project? Slide into my inbox 💌`]
         ].map(([e, t]) => [document.querySelector(e), t]).filter(([e]) => e),
         r = null,
         i = 0,
