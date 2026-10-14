@@ -1,0 +1,384 @@
+/* ==========================================================================
+   3D Floating Icons - Organic Scattered Layout & Hero Background Polish
+   ========================================================================== */
+
+/* 1. Remove background topographic pattern from the hero and page */
+.topo {
+    display: none !important;
+}
+
+.hero {
+    background-color: var(--sand, #FAF1EF);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 2. Floating Orbit Stage - Anchored directly to avatar scale & position */
+.hero__orbit {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(calc(84svh * 0.9 + 420px), 96vw);
+    height: min(84svh, 60rem);
+    pointer-events: none;
+    z-index: 2; /* Sits above face canvas (z-index: 1) */
+    overflow: visible;
+}
+
+/* 3. Base Float Item */
+.float-item {
+    position: absolute;
+    pointer-events: auto;
+    cursor: grab;
+    user-select: none;
+    z-index: 3;
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
+    transform: translate3d(var(--hover-x, 0px), var(--hover-y, 0px), 0) rotate(calc(var(--base-rot, 0deg) + var(--hover-rot, 0deg)));
+    transition: transform 0.14s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.float-item:hover {
+    z-index: 20;
+    cursor: grabbing;
+}
+
+/* Parallax Layer */
+.float-item__parallax {
+    width: 100%;
+    height: 100%;
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+    transition: transform 0.18s ease-out;
+}
+
+/* Ambient Float Layer */
+.float-item__float {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 14px 22px rgba(38, 16, 12, 0.18));
+    transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+}
+
+.float-item__float img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Hover & Active Effects */
+.float-item:hover .float-item__float {
+    transform: scale(1.15);
+    filter: drop-shadow(0 26px 36px rgba(38, 16, 12, 0.30));
+}
+
+.float-item:active .float-item__float {
+    transform: scale(1.05);
+}
+
+/* 4. Instant Hover Tooltip Labels (Pops up in 80ms, zero lag) */
+.float-item__label {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translate(-50%, 4px) rotate(calc(-1 * (var(--base-rot, 0deg) + var(--hover-rot, 0deg))));
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: #26100C;
+    color: #FAF1EF;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    padding: 0.36rem 0.82rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 10px 26px rgba(38, 16, 12, 0.32);
+    border: 1px solid rgba(250, 241, 239, 0.18);
+    transition: opacity 0.08s ease-out, transform 0.08s ease-out, visibility 0.08s;
+    z-index: 30;
+}
+
+/* Tooltip arrow pointing down towards icon */
+.float-item__label::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0 5px;
+    border-style: solid;
+    border-color: #26100C transparent transparent transparent;
+}
+
+/* Trigger instantly on hover */
+.float-item:hover .float-item__label {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) rotate(calc(-1 * (var(--base-rot, 0deg) + var(--hover-rot, 0deg))));
+}
+
+/* For upper row icons (Meta, TikTok, Growth), display label underneath */
+.float-item--meta .float-item__label,
+.float-item--tiktok .float-item__label,
+.float-item--growth .float-item__label {
+    bottom: auto;
+    top: calc(100% + 12px);
+    transform: translate(-50%, -4px) rotate(calc(-1 * (var(--base-rot, 0deg) + var(--hover-rot, 0deg))));
+}
+
+.float-item--meta .float-item__label::after,
+.float-item--tiktok .float-item__label::after,
+.float-item--growth .float-item__label::after {
+    top: auto;
+    bottom: 100%;
+    border-width: 0 5px 5px 5px;
+    border-color: transparent transparent #26100C transparent;
+}
+
+.float-item--meta:hover .float-item__label,
+.float-item--tiktok:hover .float-item__label,
+.float-item--growth:hover .float-item__label {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) rotate(calc(-1 * (var(--base-rot, 0deg) + var(--hover-rot, 0deg))));
+}
+
+/* 5. Asymmetric Ambient Floating Animations */
+@keyframes scatterFloat1 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(3px, -15px, 0) rotate(3.5deg);
+    }
+    100% {
+        transform: translate3d(-3px, 6px, 0) rotate(-2deg);
+    }
+}
+
+@keyframes scatterFloat2 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(-4px, -18px, 0) rotate(-4.5deg);
+    }
+    100% {
+        transform: translate3d(3px, 5px, 0) rotate(3deg);
+    }
+}
+
+@keyframes scatterFloat3 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(4px, -13px, 0) rotate(3deg);
+    }
+    100% {
+        transform: translate3d(-2px, 7px, 0) rotate(-3.5deg);
+    }
+}
+
+@keyframes scatterFloat4 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(-3px, -14px, 0) rotate(-3deg);
+    }
+    100% {
+        transform: translate3d(3px, 4px, 0) rotate(2deg);
+    }
+}
+
+/* Continuous ambient float with staggered timing */
+.float-item--meta:not(:hover) .float-item__float {
+    animation: scatterFloat1 4.7s ease-in-out infinite alternate 0s;
+}
+
+.float-item--facebook:not(:hover) .float-item__float {
+    animation: scatterFloat3 5.3s ease-in-out infinite alternate -1.8s;
+}
+
+.float-item--instagram:not(:hover) .float-item__float {
+    animation: scatterFloat2 5.5s ease-in-out infinite alternate -2.6s;
+}
+
+.float-item--tiktok:not(:hover) .float-item__float {
+    animation: scatterFloat4 4.3s ease-in-out infinite alternate -0.9s;
+}
+
+.float-item--growth:not(:hover) .float-item__float {
+    animation: scatterFloat2 5.2s ease-in-out infinite alternate -2.1s;
+}
+
+.float-item--target:not(:hover) .float-item__float {
+    animation: scatterFloat1 4.8s ease-in-out infinite alternate -1.3s;
+}
+
+.float-item--shopify:not(:hover) .float-item__float {
+    animation: scatterFloat3 5.6s ease-in-out infinite alternate -3.4s;
+}
+
+/* 6. ORGANIC SCATTERED POSITIONS & SIZES */
+
+/* Meta: High up on the left */
+.float-item--meta {
+    width: clamp(86px, 7.2vw, 118px);
+    height: clamp(86px, 7.2vw, 118px);
+    top: 9%;
+    left: 8%;
+    --base-rot: -10deg;
+}
+
+/* Facebook: Mid-high left, pushed outward, clear of text */
+.float-item--facebook {
+    width: clamp(78px, 6.4vw, 104px);
+    height: clamp(78px, 6.4vw, 104px);
+    top: 28%;
+    left: 1%;
+    --base-rot: -12deg;
+}
+
+/* Instagram: Mid-height, nestled closer to her left curls */
+.float-item--instagram {
+    width: clamp(82px, 6.8vw, 110px);
+    height: clamp(82px, 6.8vw, 110px);
+    top: 48%;
+    left: 14%;
+    --base-rot: 14deg;
+}
+
+/* TikTok: High crown floater, slightly right of head center */
+.float-item--tiktok {
+    width: clamp(68px, 5.5vw, 90px);
+    height: clamp(68px, 5.5vw, 90px);
+    top: 3%;
+    left: 56%;
+    --base-rot: 9deg;
+}
+
+/* Growth Chart: High right, outer */
+.float-item--growth {
+    width: clamp(88px, 7.3vw, 118px);
+    height: clamp(88px, 7.3vw, 118px);
+    top: 13%;
+    left: 82%;
+    --base-rot: -7deg;
+}
+
+/* Target: Mid-height right, tucked closer inward to her cheek */
+.float-item--target {
+    width: clamp(82px, 6.7vw, 110px);
+    height: clamp(82px, 6.7vw, 110px);
+    top: 36%;
+    left: 74%;
+    --base-rot: 12deg;
+}
+
+/* Shopify: Lower right, floating at outer right shoulder */
+.float-item--shopify {
+    width: clamp(80px, 6.6vw, 106px);
+    height: clamp(80px, 6.6vw, 106px);
+    top: 60%;
+    left: 81%;
+    --base-rot: -11deg;
+}
+
+/* 7. Tablet Adjustments (761px - 1080px) */
+@media (max-width: 1080px) {
+    .hero__orbit {
+        width: 96vw;
+    }
+
+    .float-item--meta {
+        top: 10%;
+        left: 5%;
+    }
+    .float-item--facebook {
+        top: 29%;
+        left: 1%;
+    }
+    .float-item--instagram {
+        top: 48%;
+        left: 10%;
+    }
+    .float-item--growth {
+        top: 13%;
+        left: 82%;
+    }
+    .float-item--target {
+        top: 37%;
+        left: 75%;
+    }
+    .float-item--shopify {
+        top: 60%;
+        left: 80%;
+    }
+    .float-item--tiktok {
+        top: 4%;
+        left: 55%;
+    }
+}
+
+/* 8. Mobile Adjustments (<= 760px) */
+@media (max-width: 760px) {
+    .hero__orbit {
+        position: absolute;
+        inset: auto 0 0 0;
+        transform: none;
+        left: 0;
+        width: 100%;
+        height: 100vw;
+        max-height: 480px;
+    }
+
+    .float-item {
+        width: 52px;
+        height: 52px;
+    }
+
+    .float-item--meta {
+        top: 7%;
+        left: 6%;
+    }
+
+    .float-item--growth {
+        top: 10%;
+        left: 76%;
+    }
+
+    .float-item--target {
+        top: 33%;
+        left: 80%;
+    }
+
+    .float-item--instagram {
+        top: 44%;
+        left: 5%;
+    }
+
+    .float-item--shopify {
+        top: 62%;
+        left: 78%;
+    }
+
+    /* Hide labels on mobile touch screens to avoid blocking screen */
+    .float-item__label {
+        display: none;
+    }
+
+    .float-item--facebook,
+    .float-item--tiktok {
+        display: none;
+    }
+}
