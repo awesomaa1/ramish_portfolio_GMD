@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Campaign Methodology - Interactive Stacking Cards & Deck Dimension Polish
+   ========================================================================== */
+
+.process {
+    position: relative;
+}
+
+@media (min-width: 769px) {
+    .process__grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) !important;
+        gap: clamp(2rem, 4.5vw, 4rem) !important;
+        align-items: start !important;
+    }
+}
+
+/* 1. Sticky Stack Wrapper */
+.campaign-stack-container {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: calc(50vh - 165px);
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+/* 2. Sleek Step Progress Header */
+.campaign-stack-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1.1rem;
+    margin-bottom: 0.85rem;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(38, 16, 12, 0.1);
+    border-radius: 999px;
+    box-shadow: 0 8px 24px -4px rgba(38, 16, 12, 0.08), 0 2px 6px rgba(38, 16, 12, 0.04);
+    user-select: none;
+}
+
+.campaign-stack-tracker {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+    color: var(--olive-deep, #5A2B23);
+    font-weight: 600;
+}
+
+.campaign-stack-tracker strong {
+    color: var(--ink, #26100C);
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+
+.campaign-stack-name {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    background: var(--olive-pale, #F2CAC7);
+    color: var(--ink, #26100C);
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.campaign-stack-bars {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.bar-pill {
+    width: 1.4rem;
+    height: 0.38rem;
+    background: rgba(38, 16, 12, 0.16);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bar-pill:hover {
+    background: var(--olive, #9E3F35);
+    transform: scaleY(1.3);
+}
+
+.bar-pill.is-active {
+    background: var(--olive, #9E3F35);
+    width: 2.2rem;
+    box-shadow: 0 0 8px rgba(158, 63, 53, 0.45);
+}
+
+.bar-pill.is-done {
+    background: var(--olive, #9E3F35);
+    opacity: 0.6;
+}
+
+/* 3. Deck Stage - 16:9 Aspect Ratio */
+.campaign-deck {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9.2;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+/* 4. Individual Stacking Card */
+.campaign-card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: #170B09;
+    border: 1.5px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 24px 50px -12px rgba(22, 10, 8, 0.45), 0 0 0 1px rgba(38, 16, 12, 0.1);
+    transform-origin: center bottom;
+    will-change: transform, opacity, filter;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.45s ease,
+                filter 0.45s ease,
+                box-shadow 0.45s ease;
+    user-select: none;
+}
+
+.campaign-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Floating Glass Badge */
+.campaign-card__badge {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: 5;
+    background: rgba(18, 8, 6, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    padding: 0.32rem 0.8rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #FAF1EF;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.025em;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.badge-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: #FF6B5E;
+    box-shadow: 0 0 8px #FF6B5E;
+    animation: pulse-dot 2.2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.85);
+    }
+}
+
+/* Subtle corner label / hint */
+.campaign-card__tag {
+    position: absolute;
+    bottom: 0.9rem;
+    right: 0.9rem;
+    z-index: 5;
+    background: rgba(18, 8, 6, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgba(250, 241, 239, 0.85);
+    letter-spacing: 0.03em;
+}
+
+/* 5. Process Step Active Enhancement */
+.process__step {
+    cursor: pointer;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.process__step:hover {
+    opacity: 0.85 !important;
+}
+
+.process__step.is-active {
+    opacity: 1 !important;
+}
+
+/* 6. Mobile Responsiveness */
+.process__step-media {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .campaign-stack-container {
+        display: none !important;
+    }
+    .process__step-media {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9.2;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #170B09;
+        border: 1.5px solid rgba(38, 16, 12, 0.12);
+        box-shadow: 0 14px 32px rgba(38, 16, 12, 0.12);
+        margin-top: 1.25rem;
+        position: relative;
+    }
+    .process__step-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}

@@ -41,6 +41,7 @@
     </script>
     <link rel="stylesheet" href="/_astro/Base.W9m5EXp8.css">
     <link rel="stylesheet" href="/hero-3d-icons.css">
+    <link rel="stylesheet" href="/campaign-stack.css">
 </head>
 
 <body id="top"><a class="skip" href="#content">Skip to content</a>
@@ -313,37 +314,110 @@
                 <div class="process__steps">
                     <h2 class="display" id="process-title">How I run a campaign</h2>
                     <ol>
-                        <li class="process__step" data-step="0"><span class="process__num">1</span>
+                        <li class="process__step is-active" data-step="0"><span class="process__num">1</span>
                             <h3>Understand</h3>
                             <p>What are we trying to achieve? Whether it's sales, leads, or brand awareness, we define what winning looks like first.</p>
+                            <div class="process__step-media" aria-hidden="true">
+                                <img src="/how-i-run-campaign/understand-opt.png" alt="Understand - Sales, Leads &amp; Brand Awareness" width="1400" height="781" loading="lazy">
+                            </div>
                         </li>
                         <li class="process__step" data-step="1"><span class="process__num">2</span>
                             <h3>Target</h3>
                             <p>Who are we trying to reach? Mapping customer intent, studying what competitors are running, and finding the right segments.</p>
+                            <div class="process__step-media" aria-hidden="true">
+                                <img src="/how-i-run-campaign/target-opt.png" alt="Target - Audience &amp; Research" width="1400" height="781" loading="lazy">
+                            </div>
                         </li>
                         <li class="process__step" data-step="2"><span class="process__num">3</span>
                             <h3>Build</h3>
                             <p>Setting up the campaign structure, budget rules, audiences, and ad creatives cleanly in Meta Ads Manager.</p>
+                            <div class="process__step-media" aria-hidden="true">
+                                <img src="/how-i-run-campaign/build-opt.png" alt="Build - Campaign Structure" width="1400" height="781" loading="lazy">
+                            </div>
                         </li>
                         <li class="process__step" data-step="3"><span class="process__num">4</span>
                             <h3>Test</h3>
                             <p>Launching structured variations to see which hooks and visual formats stop the scroll and earn clicks.</p>
+                            <div class="process__step-media" aria-hidden="true">
+                                <img src="/how-i-run-campaign/test-opt.png" alt="Test - Creative Variations" width="1400" height="781" loading="lazy">
+                            </div>
                         </li>
                         <li class="process__step" data-step="4"><span class="process__num">5</span>
                             <h3>Learn</h3>
                             <p>Looking at CTR, CPC, and frequency numbers to figure out what's working and why.</p>
+                            <div class="process__step-media" aria-hidden="true">
+                                <img src="/how-i-run-campaign/learn-opt.png" alt="Learn - Analytics &amp; Insights" width="1400" height="781" loading="lazy">
+                            </div>
                         </li>
                         <li class="process__step" data-step="5"><span class="process__num">6</span>
                             <h3>Improve</h3>
                             <p>Refining winning ads and pausing underperformers instead of randomly changing campaign settings.</p>
+                            <div class="process__step-media" aria-hidden="true">
+                                <img src="/how-i-run-campaign/improve-opt.png" alt="Improve - Scaling Winners" width="1400" height="781" loading="lazy">
+                            </div>
                         </li>
                     </ol>
                 </div>
-                <div class="process__phone" aria-hidden="true">
-                    <div class="phone" style="background:#FFFFFF; display:flex; align-items:center; justify-content:center; padding: 2rem; border-radius: 2rem; border: 1.5px solid rgba(38, 16, 12, 0.12); box-shadow: 0 10px 30px rgba(38, 16, 12, 0.08);">
-                        <div style="text-align:center; color:#26100C;">
-                            <p style="font-size:1.5rem; font-weight:700; margin:0 0 0.5rem;">Meta Ads</p>
-                            <p style="font-size:0.95rem; color:#5A2B23; margin:0;">Target · Test · Iterate · Scale</p>
+                <div class="campaign-stack-container" id="campaign-stack-container" aria-hidden="true">
+                    <div class="campaign-deck" id="campaign-deck">
+                        <!-- Card 0: Understand -->
+                        <div class="campaign-card" data-card="0">
+                            <div class="campaign-card__badge">
+                                <span class="badge-dot"></span>
+                                <span>01 · Understand</span>
+                            </div>
+                            <span class="campaign-card__tag">Objectives &amp; Funnel</span>
+                            <img class="campaign-card__img" src="/how-i-run-campaign/understand-opt.png" alt="Understand - Objectives &amp; Funnel" width="1400" height="781" loading="eager">
+                        </div>
+
+                        <!-- Card 1: Target -->
+                        <div class="campaign-card" data-card="1">
+                            <div class="campaign-card__badge">
+                                <span class="badge-dot"></span>
+                                <span>02 · Target</span>
+                            </div>
+                            <span class="campaign-card__tag">Audience &amp; Insights</span>
+                            <img class="campaign-card__img" src="/how-i-run-campaign/target-opt.png" alt="Target - Audience &amp; Insights" width="1400" height="781" loading="eager">
+                        </div>
+
+                        <!-- Card 2: Build -->
+                        <div class="campaign-card" data-card="2">
+                            <div class="campaign-card__badge">
+                                <span class="badge-dot"></span>
+                                <span>03 · Build</span>
+                            </div>
+                            <span class="campaign-card__tag">Structure &amp; Creative</span>
+                            <img class="campaign-card__img" src="/how-i-run-campaign/build-opt.png" alt="Build - Structure &amp; Creative" width="1400" height="781" loading="eager">
+                        </div>
+
+                        <!-- Card 3: Test -->
+                        <div class="campaign-card" data-card="3">
+                            <div class="campaign-card__badge">
+                                <span class="badge-dot"></span>
+                                <span>04 · Test</span>
+                            </div>
+                            <span class="campaign-card__tag">A/B Experiments</span>
+                            <img class="campaign-card__img" src="/how-i-run-campaign/test-opt.png" alt="Test - A/B Experiments" width="1400" height="781" loading="eager">
+                        </div>
+
+                        <!-- Card 4: Learn -->
+                        <div class="campaign-card" data-card="4">
+                            <div class="campaign-card__badge">
+                                <span class="badge-dot"></span>
+                                <span>05 · Learn</span>
+                            </div>
+                            <span class="campaign-card__tag">CTR &amp; ROAS Analytics</span>
+                            <img class="campaign-card__img" src="/how-i-run-campaign/learn-opt.png" alt="Learn - Analytics &amp; Performance" width="1400" height="781" loading="eager">
+                        </div>
+
+                        <!-- Card 5: Improve -->
+                        <div class="campaign-card" data-card="5">
+                            <div class="campaign-card__badge">
+                                <span class="badge-dot"></span>
+                                <span>06 · Improve</span>
+                            </div>
+                            <span class="campaign-card__tag">Scaling Winners</span>
+                            <img class="campaign-card__img" src="/how-i-run-campaign/improve-opt.png" alt="Improve - Scaling Winners" width="1400" height="781" loading="eager">
                         </div>
                     </div>
                 </div>
@@ -516,6 +590,7 @@
         <span>Top</span>
     </a>
     <script type="module" src="/_astro/Base.astro_astro_type_script_index_0_lang.DjbxGvct.js"></script>
+    <script type="module" src="/campaign-stack.js"></script>
 </body>
 
 </html>
